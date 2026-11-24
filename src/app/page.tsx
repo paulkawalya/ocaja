@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { SiteHeader } from "@/components/ocaja/site-header";
 import { SiteFooter } from "@/components/ocaja/site-footer";
+import { CookieConsent } from "@/components/ocaja/cookie-consent";
+import { SideContactDock } from "@/components/ocaja/side-contact-dock";
 import { HomePage } from "@/components/ocaja/pages/home-page";
 import { AboutPage } from "@/components/ocaja/pages/about-page";
 import { ServicesPage } from "@/components/ocaja/pages/services-page";
@@ -65,6 +67,8 @@ export default function Page() {
         {view.name === "contact" ? <ContactPage navigate={navigate} /> : null}
       </main>
       <SiteFooter navigate={navigate} />
+      <CookieConsent />
+      <SideContactDock />
     </div>
   );
 }

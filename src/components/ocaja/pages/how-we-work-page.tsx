@@ -1,19 +1,27 @@
 "use client";
 
 import { ArrowDown } from "lucide-react";
-import { Reveal, PageHero, CtaBand } from "../ui-bits";
+import { Reveal, CtaBand } from "../ui-bits";
+import { PageHeroSplit } from "../page-hero-split";
+import { TeamPhotoShowcase } from "../team-photo-showcase";
+import { HERO_PEOPLE_IMAGES } from "@/lib/page-images";
 import { STAGES, type Route } from "@/lib/ocaja-data";
 
 export function HowWeWorkPage({ navigate }: { navigate: (r: Route) => void }) {
+  const heroPeople = HERO_PEOPLE_IMAGES["how-we-work"];
+
   return (
     <>
-      <PageHero
-        kicker="Process"
-        title="How We Work"
-        tagline="Every engagement follows four practical stages that align requirements, manage delivery risk and create a clear path from idea to ongoing support."
+      <PageHeroSplit
+        badge="Proven 4-Stage Delivery Framework"
+        title="From Discovery to Continuous Support in 4 Practical Stages"
+        description="Every engagement follows four structured stages that align requirements, eliminate scope surprises, enforce enterprise security baselines, and guarantee ongoing support after deployment."
+        buttonLabel="Start Stage 01: Discovery"
+        onButtonClick={() => navigate({ name: "contact" })}
+        heroImage={heroPeople}
       />
 
-      <section className="mx-auto max-w-5xl px-5 py-16 sm:px-8 md:py-20">
+      <section className="mx-auto max-w-5xl px-5 py-20 sm:px-8 md:py-24">
         <div className="relative">
           {/* connecting line (desktop) */}
           <div
@@ -24,32 +32,32 @@ export function HowWeWorkPage({ navigate }: { navigate: (r: Route) => void }) {
             {STAGES.map((s, i) => (
               <Reveal key={s.num} delay={0.05 * i}>
                 <div className="relative sm:pl-24">
-                  <span className="absolute left-0 top-6 z-10 hidden h-14 w-14 place-items-center rounded-2xl bg-navy font-heading text-lg font-bold text-white shadow-lg shadow-navy/25 sm:grid">
+                  <span className="absolute left-0 top-6 z-10 hidden h-14 w-14 place-items-center rounded-2xl bg-[#021a40] font-heading text-lg font-bold text-white shadow-lg shadow-[#021a40]/25 sm:grid">
                     {s.num}
                   </span>
-                  <div className="rounded-2xl border border-[#E7E9F0] bg-white p-7 transition-all duration-300 hover:border-navy/25 hover:shadow-[0_20px_40px_-18px_rgba(32,67,143,0.2)] sm:p-8">
+                  <div className="rounded-2xl border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:border-[#1685f8]/30 hover:shadow-xl sm:p-8">
                     <div className="flex flex-wrap items-center gap-3">
-                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-navy-tint font-heading text-[0.9rem] font-bold text-navy sm:hidden">
+                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#E9EEF7] font-heading text-xs font-bold text-[#021a40] sm:hidden">
                         {s.num}
                       </span>
-                      <h2 className="font-heading text-[1.35rem] font-semibold text-navy-deep">
-                        {s.title}
+                      <h2 className="font-heading text-xl font-bold text-[#021a40]">
+                        Stage {s.num}: {s.title}
                       </h2>
                     </div>
                     <div className="mt-5 grid gap-5 md:grid-cols-2">
-                      <div className="rounded-xl bg-mist p-5">
-                        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-ojagray">
+                      <div className="rounded-xl bg-slate-50 p-5 border border-slate-100">
+                        <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-slate-500">
                           What happens
                         </p>
-                        <p className="mt-2 text-[0.92rem] leading-relaxed text-navy-deep/85">
+                        <p className="mt-2 text-xs leading-relaxed text-slate-700">
                           {s.what}
                         </p>
                       </div>
-                      <div className="rounded-xl bg-navy-tint/60 p-5">
-                        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-navy">
-                          What you get
+                      <div className="rounded-xl bg-emerald-50/60 p-5 border border-emerald-500/20">
+                        <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-emerald-800">
+                          Key Deliverable
                         </p>
-                        <p className="mt-2 text-[0.92rem] font-medium leading-relaxed text-navy-deep">
+                        <p className="mt-2 text-xs font-bold leading-relaxed text-emerald-950">
                           {s.outcome}
                         </p>
                       </div>
@@ -57,7 +65,7 @@ export function HowWeWorkPage({ navigate }: { navigate: (r: Route) => void }) {
                   </div>
                   {i < STAGES.length - 1 ? (
                     <div className="mt-6 hidden justify-start pl-2 sm:flex">
-                      <ArrowDown className="h-5 w-5 text-navy/30" aria-hidden="true" />
+                      <ArrowDown className="h-5 w-5 text-slate-300" aria-hidden="true" />
                     </div>
                   ) : null}
                 </div>
@@ -66,6 +74,21 @@ export function HowWeWorkPage({ navigate }: { navigate: (r: Route) => void }) {
           </div>
         </div>
       </section>
+
+      {/* African Agile Sprint Delivery Showcase */}
+      <TeamPhotoShowcase
+        kicker="Agile Engineering Culture"
+        title="Predictable Sprints, Daily Standups & Continuous Delivery"
+        subtitle="Our engineering pods operate on disciplined two-week sprint cadences with automated CI/CD pipelines, strict code reviews, and direct client demo sessions."
+        imageUrl={heroPeople.imageUrl}
+        imageAlt="African software developers in an agile sprint planning standup"
+        badgeLabel="Agile Pods · Kampala HQ & Lusaka Hub"
+        bullets={[
+          "Bi-weekly sprint planning and working demos with real system prototypes",
+          "Automated linting, integration testing, and zero-CVE security gates before merging",
+          "Dedicated technical account managers and sprint progress tracking in Jira",
+        ]}
+      />
 
       <CtaBand
         title="Ready to start at stage one?"

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChevronDown, Menu, ArrowRight } from "lucide-react";
+import { ChevronDown, Menu, ArrowRight, Phone, Mail } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,10 +16,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
 import { Logo } from "./logo";
 import { Icon } from "./icon";
-import { PILLARS, type Route } from "@/lib/ocaja-data";
+import { PILLARS, PRODUCTS, FEATURED_PROJECTS, type Route } from "@/lib/ocaja-data";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -29,12 +28,11 @@ interface NavItem {
 }
 
 const NAV: NavItem[] = [
-  { label: "Home", route: { name: "home" }, key: "home" },
-  { label: "About", route: { name: "about" }, key: "about" },
+  { label: "Products", route: { name: "solutions" }, key: "solutions" },
+  { label: "Industries", route: { name: "sectors" }, key: "sectors" },
   { label: "Services", route: { name: "services" }, key: "services" },
-  { label: "Solutions", route: { name: "solutions" }, key: "solutions" },
-  { label: "Sectors", route: { name: "sectors" }, key: "sectors" },
   { label: "How We Work", route: { name: "how-we-work" }, key: "how-we-work" },
+  { label: "About Us", route: { name: "about" }, key: "about" },
   { label: "Contact", route: { name: "contact" }, key: "contact" },
 ];
 
@@ -49,12 +47,13 @@ export function SiteHeader({
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const isHome = view.name === "home";
   const activeKey =
     view.name === "pillar" ? "services" : (view.name as string);
 
@@ -66,203 +65,331 @@ export function SiteHeader({
   const isActive = (item: NavItem) => activeKey === item.key;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto max-w-7xl px-4 pt-3 sm:px-6 sm:pt-4">
-        <div
-          className={cn(
-            "flex h-16 items-center justify-between gap-3 rounded-full border bg-white/85 pl-5 pr-3 backdrop-blur-xl transition-shadow duration-300",
-            scrolled
-              ? "border-navy/10 shadow-[0_12px_40px_-12px_rgba(12,31,74,0.25)]"
-              : "border-black/[0.06] shadow-sm"
-          )}
-        >
+    <header className="fixed inset-x-0 top-0 z-50 w-full">
+      {/* 1. Signature Accent Gradient Line (Always on Top) */}
+      <div className="talentelgia-accent-line w-full" />
+
+      {/* 2. Top Mini-Bar (Dark on Home, Clean White on All Other Pages) */}
+      <div
+        className={cn(
+          "hidden w-full px-4 py-2 text-xs md:block transition-colors duration-300",
+          isHome
+            ? "border-b border-white/10 bg-[#02183c] text-white/80"
+            : "border-b border-slate-200 bg-white text-slate-600 shadow-xs"
+        )}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-2 sm:px-4">
+          <div className="flex items-center gap-4">
+            <span
+              className={cn(
+                "text-xs font-semibold",
+                isHome ? "text-[#2AE6FB]" : "text-[#1685f8] font-bold"
+              )}
+            >
+              Driven by Code. Defined by Innovation
+            </span>
+            <span
+              className={cn(
+                "h-3 w-px",
+                isHome ? "bg-white/20" : "bg-slate-200"
+              )}
+            />
+            <span className={isHome ? "text-white/70" : "text-slate-600"}>
+              Offices:{" "}
+              <strong className={isHome ? "text-white" : "text-[#021a40]"}>
+                Kampala
+              </strong>{" "}
+              (UG) &amp;{" "}
+              <strong className={isHome ? "text-white" : "text-[#021a40]"}>
+                Lusaka
+              </strong>{" "}
+              (ZM)
+            </span>
+          </div>
+
+          <div className="flex items-center gap-5">
+            <a
+              href="tel:+256772418560"
+              className={cn(
+                "flex items-center gap-1.5 transition-colors",
+                isHome ? "hover:text-white" : "hover:text-[#1685f8]"
+              )}
+            >
+              <Phone
+                className={cn(
+                  "h-3 w-3",
+                  isHome ? "text-[#2AE6FB]" : "text-[#1685f8]"
+                )}
+              />
+              <span>UG: +256 772 418 560</span>
+            </a>
+            <a
+              href="tel:+260976335914"
+              className={cn(
+                "flex items-center gap-1.5 transition-colors",
+                isHome ? "hover:text-white" : "hover:text-[#1685f8]"
+              )}
+            >
+              <Phone
+                className={cn(
+                  "h-3 w-3",
+                  isHome ? "text-[#2AE6FB]" : "text-[#1685f8]"
+                )}
+              />
+              <span>ZM: +260 976 335 914</span>
+            </a>
+            <a
+              href="mailto:info@ocajatech.com"
+              className={cn(
+                "flex items-center gap-1.5 transition-colors",
+                isHome ? "hover:text-white" : "hover:text-[#1685f8]"
+              )}
+            >
+              <Mail
+                className={cn(
+                  "h-3 w-3",
+                  isHome ? "text-[#2AE6FB]" : "text-[#1685f8]"
+                )}
+              />
+              <span>info@ocajatech.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. Main Full-Width Navbar (Always Dark Blue across all pages) */}
+      <nav
+        className={cn(
+          "w-full transition-all duration-300",
+          scrolled
+            ? "border-b border-white/15 bg-[#021a40]/95 shadow-2xl backdrop-blur-xl"
+            : "border-b border-white/10 bg-[#021a40]/80 backdrop-blur-md"
+        )}
+      >
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
+          {/* Logo */}
           <button
             type="button"
             onClick={() => go({ name: "home" })}
-            className="cursor-pointer"
+            className="cursor-pointer shrink-0"
             aria-label="OCAJA Technologies — home"
           >
-            <Logo />
+            <Logo reversed />
           </button>
 
-          {/* Desktop nav */}
-          <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
-            {NAV.map((item) =>
-              item.key === "services" ? (
-                <DropdownMenu key={item.key}>
-                  <DropdownMenuTrigger asChild>
-                    <button
-                      type="button"
-                      className={cn(
-                        "flex cursor-pointer items-center gap-1 rounded-full px-3.5 py-2 text-[0.86rem] font-medium transition-colors",
-                        isActive(item)
-                          ? "bg-navy-tint text-navy-deep"
-                          : "text-navy-deep/75 hover:bg-mist hover:text-navy-deep"
-                      )}
-                    >
-                      {item.label}
-                      <ChevronDown className="h-3.5 w-3.5 opacity-60" />
-                    </button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent
-                    align="center"
-                    sideOffset={12}
-                    className="w-[560px] rounded-2xl border-[#E7E9F0] p-3 shadow-[0_24px_60px_-16px_rgba(12,31,74,0.28)]"
-                  >
-                    <div className="mb-2 px-3 pt-1">
-                      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-ojagray">
-                        Six specialist practices
-                      </p>
-                    </div>
-                    <div className="grid grid-cols-2 gap-1">
-                      {PILLARS.map((p) => (
-                        <DropdownMenuItem
-                          key={p.id}
-                          asChild
-                          className="rounded-xl px-3 py-2.5 focus:bg-navy-tint/70"
-                        >
-                          <button
-                            type="button"
-                            onClick={() => go({ name: "pillar", pillarId: p.id })}
-                            className="w-full cursor-pointer text-left"
-                          >
-                            <span className="flex min-w-0 items-center gap-3">
-                              <span className="font-heading text-sm font-bold text-navy/30">
-                                {p.num}
-                              </span>
-                              <span className="min-w-0 flex-1">
-                                <span className="block text-[0.88rem] font-semibold text-navy-deep">
-                                  {p.menuTitle}
-                                </span>
-                                <span className="mt-0.5 block truncate text-[0.75rem] text-ojagray">
-                                  {p.tagline}
-                                </span>
-                              </span>
-                            </span>
-                          </button>
-                        </DropdownMenuItem>
-                      ))}
-                    </div>
-                    <div className="mt-2 border-t border-[#EEF0F5] px-3 pt-3 pb-1">
+          {/* Desktop Navigation Links */}
+          <div className="hidden items-center gap-2 lg:flex" aria-label="Primary">
+            {NAV.map((item) => {
+              if (item.key === "services") {
+                return (
+                  <DropdownMenu key={item.key}>
+                    <DropdownMenuTrigger asChild>
                       <button
                         type="button"
-                        onClick={() => go({ name: "services" })}
-                        className="group flex cursor-pointer items-center gap-1.5 text-[0.85rem] font-semibold text-navy"
+                        className={cn(
+                          "flex cursor-pointer items-center gap-1 rounded-md px-3.5 py-2 text-sm font-semibold tracking-wide transition-colors",
+                          isActive(item)
+                            ? "text-[#2AE6FB]"
+                            : "text-white/85 hover:text-[#2AE6FB]"
+                        )}
                       >
-                        View all services
-                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                        {item.label}
+                        <ChevronDown className="h-3.5 w-3.5 opacity-70" />
                       </button>
-                    </div>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              ) : (
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      align="center"
+                      sideOffset={14}
+                      className="w-[580px] rounded-2xl border-white/10 bg-[#02183c] p-3 text-white shadow-2xl"
+                    >
+                      <div className="mb-2 flex items-center justify-between border-b border-white/10 px-3 pt-1 pb-2">
+                        <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#2AE6FB]">
+                          Six Core Practices
+                        </p>
+                        <span className="text-[0.68rem] text-white/50">
+                          Kampala &amp; Lusaka
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-1.5">
+                        {PILLARS.map((p) => (
+                          <DropdownMenuItem
+                            key={p.id}
+                            asChild
+                            className="cursor-pointer rounded-xl px-3 py-2.5 focus:bg-white/10"
+                          >
+                            <button
+                              type="button"
+                              onClick={() => go({ name: "pillar", pillarId: p.id })}
+                              className="w-full text-left"
+                            >
+                              <div className="flex items-start gap-2.5">
+                                <span className="mt-0.5 grid h-7 w-7 place-items-center rounded-lg bg-white/10 text-[#2AE6FB] shrink-0">
+                                  <Icon name={p.icon} className="h-3.5 w-3.5" />
+                                </span>
+                                <div className="min-w-0 flex-1">
+                                  <span className="block text-xs font-bold text-white">
+                                    {p.menuTitle}
+                                  </span>
+                                  <span className="mt-0.5 block truncate text-[0.7rem] text-white/60">
+                                    {p.tagline}
+                                  </span>
+                                </div>
+                              </div>
+                            </button>
+                          </DropdownMenuItem>
+                        ))}
+                      </div>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                );
+              }
+
+              if (item.key === "solutions") {
+                return (
+                  <DropdownMenu key={item.key}>
+                    <DropdownMenuTrigger asChild>
+                      <button
+                        type="button"
+                        className={cn(
+                          "flex cursor-pointer items-center gap-1 rounded-md px-3.5 py-2 text-sm font-semibold tracking-wide transition-colors",
+                          isActive(item)
+                            ? "text-[#2AE6FB]"
+                            : "text-white/85 hover:text-[#2AE6FB]"
+                        )}
+                      >
+                        {item.label}
+                        <ChevronDown className="h-3.5 w-3.5 opacity-70" />
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      align="center"
+                      sideOffset={14}
+                      className="w-[460px] rounded-2xl border-white/10 bg-[#02183c] p-3 text-white shadow-2xl"
+                    >
+                      <div className="mb-2 border-b border-white/10 px-3 pt-1 pb-2">
+                        <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#2AE6FB]">
+                          Platforms &amp; Case Studies
+                        </p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-1.5">
+                        {[...PRODUCTS, ...FEATURED_PROJECTS.slice(0, 3)].map((sol) => (
+                          <DropdownMenuItem
+                            key={sol.name}
+                            asChild
+                            className="cursor-pointer rounded-xl px-3 py-2 focus:bg-white/10"
+                          >
+                            <button
+                              type="button"
+                              onClick={() => go({ name: "solutions" })}
+                              className="w-full text-left"
+                            >
+                              <span className="block text-xs font-bold text-white">
+                                {sol.name}
+                              </span>
+                              <span className="block text-[0.65rem] text-white/50">
+                                {sol.type}
+                              </span>
+                            </button>
+                          </DropdownMenuItem>
+                        ))}
+                      </div>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                );
+              }
+
+              return (
                 <button
                   key={item.key}
                   type="button"
                   onClick={() => go(item.route)}
                   className={cn(
-                    "cursor-pointer rounded-full px-3.5 py-2 text-[0.86rem] font-medium transition-colors",
+                    "cursor-pointer rounded-md px-3.5 py-2 text-sm font-semibold tracking-wide transition-colors",
                     isActive(item)
-                      ? "bg-navy-tint text-navy-deep"
-                      : "text-navy-deep/75 hover:bg-mist hover:text-navy-deep"
+                      ? "text-[#2AE6FB]"
+                      : "text-white/85 hover:text-[#2AE6FB]"
                   )}
                 >
                   {item.label}
                 </button>
-              )
-            )}
-          </nav>
+              );
+            })}
+          </div>
 
-          <div className="flex items-center gap-2">
-            <Button
-              onClick={() => go({ name: "contact" })}
-              className="hidden h-10 cursor-pointer rounded-full bg-navy px-5 text-[0.85rem] font-semibold text-white shadow-md shadow-navy/20 transition-all hover:-translate-y-0.5 hover:bg-navy-deep md:inline-flex"
-            >
-              Request a Consultation
-            </Button>
+          {/* Right Action Button: "Let's Connect" button with .shadow-bg */}
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:inline-block shadow-bg">
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById("consultation");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                  else go({ name: "contact" });
+                }}
+                className="btn-talent-primary inline-flex cursor-pointer items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold uppercase tracking-wider"
+              >
+                <span>Let&#39;s Connect</span>
+                <ArrowRight className="h-3.5 w-3.5 text-[#2AE6FB]" />
+              </button>
+            </div>
 
-            {/* Mobile menu */}
+            {/* Mobile Menu Button */}
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-10 w-10 rounded-full border-navy/15 lg:hidden"
+                <button
+                  type="button"
+                  className="grid h-10 w-10 cursor-pointer place-items-center rounded-lg border border-white/20 text-white lg:hidden transition-colors"
                   aria-label="Open menu"
                 >
-                  <Menu className="h-5 w-5 text-navy-deep" />
-                </Button>
+                  <Menu className="h-5 w-5" />
+                </button>
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="slim-scroll w-[85vw] max-w-sm overflow-y-auto border-l-0 bg-white p-0 sm:rounded-l-2xl"
+                className="slim-scroll w-[85vw] max-w-sm overflow-y-auto border-l-0 bg-[#02183c] p-0 text-white"
               >
-                <SheetHeader className="border-b border-[#EEF0F5] px-5 py-4 text-left">
+                <SheetHeader className="border-b border-white/10 px-5 py-4 text-left">
                   <SheetTitle asChild>
                     <div>
-                      <Logo />
+                      <Logo reversed />
                     </div>
                   </SheetTitle>
                   <SheetDescription className="sr-only">
                     OCAJA Technologies site navigation
                   </SheetDescription>
                 </SheetHeader>
-                <div className="px-3 py-4">
+                <div className="px-3 py-4 space-y-1">
                   {NAV.map((item) => (
                     <button
                       key={item.key}
                       type="button"
                       onClick={() => go(item.route)}
                       className={cn(
-                        "flex w-full cursor-pointer items-center justify-between rounded-xl px-4 py-3 text-left text-[0.95rem] font-medium transition-colors",
+                        "flex w-full cursor-pointer items-center justify-between rounded-xl px-4 py-3 text-left text-xs font-bold uppercase tracking-wider transition-colors",
                         isActive(item)
-                          ? "bg-navy-tint text-navy-deep"
-                          : "text-navy-deep/80 hover:bg-mist"
+                          ? "bg-white/15 text-[#2AE6FB]"
+                          : "text-white/80 hover:bg-white/10 hover:text-white"
                       )}
                     >
                       {item.label}
-                      {item.key === "services" ? (
-                        <ChevronDown className="h-4 w-4 opacity-50" />
-                      ) : null}
                     </button>
                   ))}
 
-                  <div className="mt-4 rounded-2xl bg-mist p-3">
-                    <p className="px-2 pb-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-ojagray">
-                      Our six pillars
-                    </p>
-                    {PILLARS.map((p) => (
-                      <button
-                        key={p.id}
-                        type="button"
-                        onClick={() => go({ name: "pillar", pillarId: p.id })}
-                        className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-2 py-2.5 text-left transition-colors hover:bg-white"
-                      >
-                        <span className="font-heading text-sm font-bold text-navy/30">
-                          {p.num}
-                        </span>
-                        <Icon name={p.icon} className="h-4 w-4 text-navy" />
-                        <span className="text-[0.88rem] font-medium text-navy-deep">
-                          {p.menuTitle}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="p-2">
-                    <Button
+                  <div className="pt-4">
+                    <button
+                      type="button"
                       onClick={() => go({ name: "contact" })}
-                      className="h-11 w-full cursor-pointer rounded-full bg-navy text-[0.9rem] font-semibold text-white"
+                      className="w-full rounded-full bg-[#2AE6FB] py-3 text-xs font-bold uppercase tracking-wider text-[#02183c]"
                     >
-                      Request a Consultation
-                    </Button>
+                      Let&#39;s Connect
+                    </button>
                   </div>
                 </div>
               </SheetContent>
             </Sheet>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
   );
 }

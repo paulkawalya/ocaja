@@ -13,7 +13,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Reveal, PageHero, Kicker } from "../ui-bits";
+import { Reveal, Kicker } from "../ui-bits";
+import { PageHeroSplit } from "../page-hero-split";
+import { HERO_PEOPLE_IMAGES } from "@/lib/page-images";
 import {
   PILLARS,
   OFFICES,
@@ -25,6 +27,7 @@ import {
 type FormState = "idle" | "sending" | "success" | "error";
 
 export function ContactPage({ navigate }: { navigate: (r: Route) => void }) {
+  const heroPeople = HERO_PEOPLE_IMAGES.contact;
   const [state, setState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [service, setService] = useState<string>("");
@@ -68,13 +71,19 @@ export function ContactPage({ navigate }: { navigate: (r: Route) => void }) {
 
   return (
     <>
-      <PageHero
-        kicker="Contact"
-        title="Let's Connect"
-        tagline="Tell us what you are trying to achieve and we will recommend a practical path."
+      <PageHeroSplit
+        badge="Direct Access · Kampala &amp; Lusaka"
+        title="Let's Connect &amp; Architect Your Digital Solution"
+        description="Tell us what your organization is trying to achieve. Our senior technology advisors evaluate current systems, integration dependencies, security risks, and budget parameters to recommend a practical path forward."
+        buttonLabel="Explore Offices &amp; Form"
+        onButtonClick={() => {
+          const el = document.getElementById("contact-section");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }}
+        heroImage={heroPeople}
       />
 
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-20">
+      <section id="contact-section" className="mx-auto max-w-7xl px-5 py-20 sm:px-8 md:py-24">
         <div className="grid items-start gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-14">
           {/* Form */}
           <Reveal>
@@ -217,6 +226,30 @@ export function ContactPage({ navigate }: { navigate: (r: Route) => void }) {
           {/* Info panel */}
           <Reveal delay={0.1}>
             <div className="space-y-4">
+              {/* On-Duty African Architect Consultation Card */}
+              <div className="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm">
+                <div className="relative h-44 w-full overflow-hidden bg-slate-900">
+                  <img
+                    src={heroPeople.imageUrl}
+                    alt="African Senior Solutions Architect reviewing enterprise systems"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#02183c] via-transparent to-transparent" />
+                  <span className="absolute bottom-3 left-4 rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-[10px] font-bold text-emerald-300 backdrop-blur-md border border-emerald-500/40">
+                    ● Direct Engineering Escalation
+                  </span>
+                </div>
+                <div className="p-5">
+                  <p className="font-heading text-sm font-bold text-[#021a40]">
+                    Direct Access to Senior Solutions Architects
+                  </p>
+                  <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                    No middlemen or sales reps. Your inquiry is reviewed directly by our engineering leads in Kampala and Lusaka.
+                  </p>
+                </div>
+              </div>
+
               <div className="hero-grid rounded-[1.5rem] bg-[linear-gradient(140deg,#0C1F4A,#20438F)] p-7 text-white">
                 <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-white/55">
                   Reach us directly
