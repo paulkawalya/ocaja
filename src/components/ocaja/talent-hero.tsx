@@ -99,16 +99,14 @@ export function TalentHero({ navigate }: { navigate: (r: Route) => void }) {
             <img
               src={slide.image}
               alt={slide.alt}
-              className="h-full w-full object-cover object-center filter brightness-[0.58] contrast-[1.1] saturate-[1.1]"
+              className="h-full w-full object-cover object-center filter brightness-[0.92] contrast-[1.02]"
             />
           </motion.div>
         </AnimatePresence>
 
-        {/* Central Content Area Darkening Scrims (Ensures crystal-clear content area readability while keeping background visible) */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#02183c]/75 via-[#021a40]/60 to-[#021a40]/90" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(2,24,60,0.85)_0%,rgba(2,26,64,0.55)_55%,rgba(2,24,60,0.8)_100%)]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#02183c]/80 via-transparent to-[#02183c]/80" />
-        <div className="talentelgia-dot-pattern absolute inset-0 opacity-20" />
+        {/* Very Light Overall Tint to Preserve High Background Image Visibility */}
+        <div className="absolute inset-0 bg-[#021a40]/25" />
+        <div className="talentelgia-dot-pattern absolute inset-0 opacity-15" />
 
         {/* Ambient Glow Orbs */}
         <div
@@ -121,18 +119,12 @@ export function TalentHero({ navigate }: { navigate: (r: Route) => void }) {
         />
 
         {/* Top and Bottom Fading Gradients for Smooth Boundary Blending */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#02183c] to-transparent z-1" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#021a40] to-transparent z-1" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#02183c]/90 to-transparent z-1" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#021a40]/90 to-transparent z-1" />
       </div>
 
       {/* Main Content Container (Full Cover Width & Length Alignment) */}
       <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-        {/* Dedicated Central Content Darkening Scrim */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[550px] w-full max-w-3xl rounded-[60px] bg-[#02183c]/75 blur-[70px] -z-1"
-        />
-
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id}
@@ -140,17 +132,17 @@ export function TalentHero({ navigate }: { navigate: (r: Route) => void }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -18 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto max-w-4xl"
+            className="relative mx-auto max-w-4xl rounded-3xl bg-[#02183c]/82 px-6 py-10 sm:px-12 sm:py-14 backdrop-blur-xl border border-white/10 shadow-[0_20px_60px_-15px_rgba(2,24,60,0.9)]"
           >
-            <span className="inline-block rounded-full border border-[#2AE6FB]/50 bg-[#02183c]/70 px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-[#2AE6FB] backdrop-blur-md shadow-lg">
+            <span className="inline-block rounded-full border border-[#2AE6FB]/50 bg-[#2AE6FB]/10 px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-[#2AE6FB]">
               {slide.badge} · Uganda &amp; Zambia
             </span>
 
-            <h1 className="mt-6 font-heading text-3xl font-extrabold leading-[1.12] tracking-tight text-white drop-shadow-[0_3px_16px_rgba(2,24,60,0.9)] sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 font-heading text-3xl font-extrabold leading-[1.14] tracking-tight text-white sm:text-5xl lg:text-6xl">
               {slide.heading}
             </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/90 drop-shadow-[0_2px_12px_rgba(2,24,60,0.85)] sm:text-lg">
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg">
               {slide.subheading}
             </p>
 
