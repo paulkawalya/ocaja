@@ -49,16 +49,16 @@ export function CookieConsent() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 30, scale: 0.95 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed bottom-5 inset-x-0 z-50 mx-auto w-[94%] max-w-5xl px-2 sm:bottom-7"
+          className="fixed bottom-4 inset-x-0 z-50 mx-auto w-[92%] max-w-xl px-2 sm:bottom-6"
         >
-          <div className="flex flex-col items-center justify-between gap-4 rounded-full border border-slate-200/90 bg-white/95 px-5 py-3 shadow-[0_16px_45px_-10px_rgba(2,26,64,0.22)] backdrop-blur-xl sm:flex-row sm:gap-6 sm:px-6 sm:py-3.5">
+          <div className="flex flex-col items-center justify-between gap-2.5 rounded-2xl border border-slate-200/90 bg-white/95 px-4 py-2 shadow-[0_12px_35px_-8px_rgba(2,26,64,0.18)] backdrop-blur-xl sm:flex-row sm:gap-4 sm:rounded-full sm:px-5 sm:py-2">
             {/* Left: Cookie Icon & Description */}
-            <div className="flex items-center gap-3.5 text-left">
+            <div className="flex items-center gap-2.5 text-left">
               {/* Cyan Cookie Badge */}
-              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#1fc8db]/15 text-[#00b4db]">
+              <div className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#1fc8db]/15 text-[#00b4db]">
                 <svg
-                  width="26"
-                  height="26"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -73,17 +73,17 @@ export function CookieConsent() {
                 </svg>
               </div>
 
-              <p className="text-xs leading-relaxed text-slate-700 sm:text-[0.84rem]">
-                We use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By clicking &ldquo;Accept all&rdquo;, you consent to the use of ALL the cookies.
+              <p className="text-[11px] leading-snug text-slate-600 sm:text-xs">
+                We use cookies to analyze site traffic and enhance your browsing experience.
               </p>
             </div>
 
             {/* Right: Actions */}
-            <div className="flex shrink-0 items-center gap-2.5 self-end sm:self-center">
+            <div className="flex shrink-0 items-center gap-2 self-end sm:self-center">
               <button
                 type="button"
                 onClick={handleReject}
-                className="cursor-pointer rounded-full bg-slate-100 px-5 py-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-200 sm:text-sm"
+                className="cursor-pointer rounded-full bg-slate-100 px-3.5 py-1.5 text-[11px] font-semibold text-slate-600 transition-colors hover:bg-slate-200"
               >
                 Reject all
               </button>
@@ -91,7 +91,7 @@ export function CookieConsent() {
               <button
                 type="button"
                 onClick={handleAccept}
-                className="cursor-pointer rounded-full bg-gradient-to-r from-[#00b4db] to-[#0083b0] px-6 py-2 text-xs font-semibold text-white shadow-md shadow-[#00b4db]/30 transition-all hover:brightness-105 hover:shadow-lg sm:text-sm"
+                className="cursor-pointer rounded-full bg-gradient-to-r from-[#00b4db] to-[#0083b0] px-4 py-1.5 text-[11px] font-semibold text-white shadow-sm transition-all hover:brightness-105 hover:shadow-md"
               >
                 Accept all
               </button>
