@@ -10,6 +10,8 @@ interface Slide {
   badge: string;
   heading: string;
   subheading: string;
+  image: string;
+  alt: string;
 }
 
 const SLIDES: Slide[] = [
@@ -19,6 +21,8 @@ const SLIDES: Slide[] = [
     heading: "Websites That Attract, Engage, Convert",
     subheading:
       "Elevate your brand with fast, seamless websites and enterprise platforms crafted to engage and impress your audience from the first click.",
+    image: "/hero/websites-apps.jpg",
+    alt: "African software developer engineering web applications and digital platforms",
   },
   {
     id: 2,
@@ -26,6 +30,8 @@ const SLIDES: Slide[] = [
     heading: "AI/ML Solutions Turning Data into Decisions",
     subheading:
       "Leverage AI and machine learning algorithms to enhance efficiency, automate complex documentation, and generate real-time predictive insights.",
+    image: "/hero/ai-data-decisions.jpg",
+    alt: "African data scientist analyzing predictive machine learning models and neural networks",
   },
   {
     id: 3,
@@ -33,6 +39,8 @@ const SLIDES: Slide[] = [
     heading: "Intuitive Apps That Connect and Perform",
     subheading:
       "Build mobile applications optimized for performance, user experience, and scalable growth tailored to your product goals across Africa.",
+    image: "/hero/mobile-apps.jpg",
+    alt: "African mobile engineers designing and testing enterprise and fintech smartphone apps",
   },
   {
     id: 4,
@@ -40,6 +48,8 @@ const SLIDES: Slide[] = [
     heading: "Streamline Operations With Cloud & CRM",
     subheading:
       "Implement tailored cloud infrastructure, automated workflows, and CRM systems to streamline customer interactions, boost satisfaction, and scale retention.",
+    image: "/hero/cloud-operations.jpg",
+    alt: "African cloud systems architect deploying scalable enterprise cloud infrastructure",
   },
   {
     id: 5,
@@ -47,6 +57,8 @@ const SLIDES: Slide[] = [
     heading: "24/7 Managed Cybersecurity & SOC Defense",
     subheading:
       "Protect critical digital assets, prevent cyber disruptions, and ensure rigorous regulatory compliance with continuous monitoring and rapid response.",
+    image: "/hero/cybersecurity-soc.jpg",
+    alt: "African cybersecurity specialist monitoring real-time security operations center defense maps",
   },
 ];
 
@@ -73,23 +85,44 @@ export function TalentHero({ navigate }: { navigate: (r: Route) => void }) {
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-[#021a40] pt-32 pb-20 text-white sm:pt-36 sm:pb-24">
-      {/* Background Layer: Gradient Masks & Dot Pattern (Exact Talentelgia banner-section) */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#02183c] via-[#05265d] to-[#021a40] opacity-90 pointer-events-none" />
-      <div className="talentelgia-dot-pattern absolute inset-0 z-0 opacity-25 pointer-events-none" />
+      {/* Background Dynamic Image Cross-Fade Layer */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={slide.id}
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <img
+              src={slide.image}
+              alt={slide.alt}
+              className="h-full w-full object-cover object-center filter brightness-[0.42] contrast-[1.12] saturate-[1.15]"
+            />
+          </motion.div>
+        </AnimatePresence>
 
-      {/* Ambient Glow Orbs */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-40 left-1/4 h-[550px] w-[550px] rounded-full bg-[#1685f8]/20 blur-[140px]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-40 right-1/4 h-[500px] w-[500px] rounded-full bg-[#2AE6FB]/15 blur-[150px]"
-      />
+        {/* Talentelgia Dark Navy Gradients & Color Overlays for Flawless Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#02183c]/92 via-[#021a40]/78 to-[#021a40]/95" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#02183c]/90 via-[#021a40]/60 to-[#02183c]/90" />
+        <div className="talentelgia-dot-pattern absolute inset-0 opacity-25" />
 
-      {/* Top and Bottom Fading Gradients */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#021a41] to-transparent z-1" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#021a41] to-transparent z-1" />
+        {/* Ambient Glow Orbs */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-40 left-1/4 h-[550px] w-[550px] rounded-full bg-[#1685f8]/20 blur-[140px]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-40 right-1/4 h-[500px] w-[500px] rounded-full bg-[#2AE6FB]/15 blur-[150px]"
+        />
+
+        {/* Top and Bottom Fading Gradients */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#02183c] to-transparent z-1" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#021a40] to-transparent z-1" />
+      </div>
 
       {/* Main Content Container (Full Cover Width & Length Alignment) */}
       <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center sm:px-6 lg:px-8">
