@@ -25,22 +25,20 @@ export interface AfricanTechLeader {
 export const HERO_PEOPLE_IMAGES: Record<string, PageHeroImage> = {
   // 1. Digital Financial Services
   "digital-financial-services": {
-    imageUrl:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=85",
-    imageAlt: "Black African female FinTech engineer leading digital banking and payment systems",
+    imageUrl: "/hero/mobile-apps.jpg",
+    imageAlt: "Black African FinTech engineering team reviewing payment rails and mobile banking systems in tech office",
     tag: "FinTech & Payment Rails Pod",
-    specialistName: "Faridah Namubiru",
+    specialistName: "Eric Lubega",
     specialistRole: "Senior FinTech & Payment Rails Lead",
     specialistAvatar:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
+      "https://images.unsplash.com/photo-1528901166007-3784c7dd3653?auto=format&fit=crop&w=300&q=80",
     hubLocation: "Kampala HQ",
   },
 
   // 2. Cybersecurity & Defense
   cybersecurity: {
-    imageUrl:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=85",
-    imageAlt: "Black African cybersecurity engineer in enterprise security operations center",
+    imageUrl: "/hero/cybersecurity-soc.jpg",
+    imageAlt: "Black African cybersecurity specialist monitoring real-time defense radar and threat telemetry in SOC office",
     tag: "24/7 Threat Defense & SOC",
     specialistName: "Moses Chisanga",
     specialistRole: "Principal Security & SOC Engineer",
@@ -51,9 +49,8 @@ export const HERO_PEOPLE_IMAGES: Record<string, PageHeroImage> = {
 
   // 3. Cloud Infrastructure & DevOps
   "cloud-infrastructure": {
-    imageUrl:
-      "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=1200&q=85",
-    imageAlt: "Black African cloud systems architect deploying enterprise hybrid infrastructure",
+    imageUrl: "/hero/cloud-operations.jpg",
+    imageAlt: "Black African cloud systems architect deploying enterprise cloud infrastructure and telemetry in office",
     tag: "Multi-Cloud & SRE Cluster",
     specialistName: "Brian Mwape",
     specialistRole: "Cloud Infrastructure & SRE Lead",
@@ -64,9 +61,8 @@ export const HERO_PEOPLE_IMAGES: Record<string, PageHeroImage> = {
 
   // 4. Custom Software & Applications
   "software-apps": {
-    imageUrl:
-      "https://images.unsplash.com/photo-1573497019236-17f8177b81e8?auto=format&fit=crop&w=1200&q=85",
-    imageAlt: "Black African software developer writing code in modern tech hub",
+    imageUrl: "/hero/websites-apps.jpg",
+    imageAlt: "Black African software developer writing code on multi-monitor workstation in Kampala tech office",
     tag: "AppStudio Engineering Pod",
     specialistName: "Ronald Kato",
     specialistRole: "Lead Full-Stack Architect",
@@ -77,35 +73,33 @@ export const HERO_PEOPLE_IMAGES: Record<string, PageHeroImage> = {
 
   // 5. AI & Data Analytics
   "ai-data-analytics": {
-    imageUrl:
-      "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=1200&q=85",
-    imageAlt: "Black African data scientist analyzing machine learning and predictive analytics models",
+    imageUrl: "/hero/ai-data-decisions.jpg",
+    imageAlt: "Black African data scientist and machine learning engineer analyzing predictive models in tech office",
     tag: "Cortex AI & Data Lake Pod",
-    specialistName: "Grace Achieng",
+    specialistName: "Moses Chisanga",
     specialistRole: "Lead Machine Learning & AI Specialist",
     specialistAvatar:
-      "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=300&q=80",
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&q=80",
     hubLocation: "Kampala HQ",
   },
 
   // 6. IT Consulting & Training
   "it-consulting-training": {
     imageUrl:
-      "https://images.unsplash.com/photo-1573496799515-eebbb63814f2?auto=format&fit=crop&w=1200&q=85",
-    imageAlt: "Black African IT executive advising corporate leadership on digital transformation",
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
+    imageAlt: "Black African enterprise technology consultant and corporate advisor in modern boardroom office",
     tag: "AdvisoryIQ Governance Practice",
-    specialistName: "Brenda Kiconco",
-    specialistRole: "Head of IT Advisory & Compliance",
+    specialistName: "Joseph Mumba",
+    specialistRole: "Head of IT Advisory & Enterprise Strategy",
     specialistAvatar:
-      "https://images.unsplash.com/photo-1573496799515-eebbb63814f2?auto=format&fit=crop&w=300&q=80",
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=300&q=80",
     hubLocation: "Kampala HQ",
   },
 
   // 7. Services Overview
   services: {
-    imageUrl:
-      "https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?auto=format&fit=crop&w=1200&q=85",
-    imageAlt: "Black African technology engineering team collaborating in a modern IT workspace in Lagos/Kampala",
+    imageUrl: "/hero/how-we-work-agile-team.jpg",
+    imageAlt: "Black African software engineering team collaborating in modern IT office in Kampala",
     tag: "6 Core Practices • African Talent",
     specialistName: "Ronald Kato",
     specialistRole: "Head of Engineering",
@@ -133,10 +127,10 @@ export const HERO_PEOPLE_IMAGES: Record<string, PageHeroImage> = {
       "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
     imageAlt: "Black African enterprise business executive and technology consultant",
     tag: "Cross-Industry African Sectors",
-    specialistName: "Brenda Kiconco",
+    specialistName: "Joseph Mumba",
     specialistRole: "Enterprise Sector Lead",
     specialistAvatar:
-      "https://images.unsplash.com/photo-1573496799515-eebbb63814f2?auto=format&fit=crop&w=300&q=80",
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=300&q=80",
     hubLocation: "Uganda & Zambia",
   },
 
@@ -188,11 +182,11 @@ export const AFRICAN_TECH_SPECIALISTS: AfricanTechLeader[] = [
       "https://images.unsplash.com/photo-1573497019236-17f8177b81e8?auto=format&fit=crop&w=300&q=80",
   },
   {
-    name: "Faridah Namubiru",
+    name: "Eric Lubega",
     role: "Senior FinTech & Payment Rails Lead",
     location: "Kampala HQ",
     avatarUrl:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
+      "https://images.unsplash.com/photo-1528901166007-3784c7dd3653?auto=format&fit=crop&w=300&q=80",
   },
   {
     name: "Moses Chisanga",
@@ -202,13 +196,6 @@ export const AFRICAN_TECH_SPECIALISTS: AfricanTechLeader[] = [
       "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&q=80",
   },
   {
-    name: "Grace Achieng",
-    role: "Lead Data Scientist & AI Specialist",
-    location: "Kampala HQ",
-    avatarUrl:
-      "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=300&q=80",
-  },
-  {
     name: "Brian Mwape",
     role: "Principal Cloud Architect & SRE Lead",
     location: "Lusaka Hub",
@@ -216,10 +203,10 @@ export const AFRICAN_TECH_SPECIALISTS: AfricanTechLeader[] = [
       "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=300&q=80",
   },
   {
-    name: "Brenda Kiconco",
+    name: "Joseph Mumba",
     role: "Head of IT Advisory & Compliance",
     location: "Kampala HQ",
     avatarUrl:
-      "https://images.unsplash.com/photo-1573496799515-eebbb63814f2?auto=format&fit=crop&w=300&q=80",
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=300&q=80",
   },
 ];
