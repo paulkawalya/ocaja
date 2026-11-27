@@ -50,7 +50,7 @@ export function Logo({
 }) {
   const sizeClasses = {
     sm: "h-9",
-    md: "h-14",
+    md: "h-12 sm:h-13",
     lg: "h-16",
   };
 
