@@ -90,7 +90,7 @@ export function TalentHero({ navigate }: { navigate: (r: Route) => void }) {
         <AnimatePresence mode="sync">
           <motion.div
             key={slide.id}
-            initial={{ opacity: 0, scale: 1.06 }}
+            initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
@@ -99,29 +99,29 @@ export function TalentHero({ navigate }: { navigate: (r: Route) => void }) {
             <img
               src={slide.image}
               alt={slide.alt}
-              className="h-full w-full object-cover object-center filter brightness-[0.42] contrast-[1.12] saturate-[1.15]"
+              className="h-full w-full object-cover object-center filter brightness-[0.75] contrast-[1.05] saturate-[1.1]"
             />
           </motion.div>
         </AnimatePresence>
 
-        {/* Talentelgia Dark Navy Gradients & Color Overlays for Flawless Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#02183c]/92 via-[#021a40]/78 to-[#021a40]/95" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#02183c]/90 via-[#021a40]/60 to-[#02183c]/90" />
-        <div className="talentelgia-dot-pattern absolute inset-0 opacity-25" />
+        {/* Reduced Blue Opacity Overlays for High Background Image Clarity */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#02183c]/60 via-[#021a40]/35 to-[#021a40]/75" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#02183c]/50 via-transparent to-[#02183c]/50" />
+        <div className="talentelgia-dot-pattern absolute inset-0 opacity-15" />
 
         {/* Ambient Glow Orbs */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -top-40 left-1/4 h-[550px] w-[550px] rounded-full bg-[#1685f8]/20 blur-[140px]"
+          className="pointer-events-none absolute -top-40 left-1/4 h-[550px] w-[550px] rounded-full bg-[#1685f8]/15 blur-[140px]"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-40 right-1/4 h-[500px] w-[500px] rounded-full bg-[#2AE6FB]/15 blur-[150px]"
+          className="pointer-events-none absolute -bottom-40 right-1/4 h-[500px] w-[500px] rounded-full bg-[#2AE6FB]/12 blur-[150px]"
         />
 
-        {/* Top and Bottom Fading Gradients */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#02183c] to-transparent z-1" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#021a40] to-transparent z-1" />
+        {/* Top and Bottom Fading Gradients for Smooth Boundary Blending */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#02183c]/85 to-transparent z-1" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#021a40] to-transparent z-1" />
       </div>
 
       {/* Main Content Container (Full Cover Width & Length Alignment) */}
@@ -135,15 +135,15 @@ export function TalentHero({ navigate }: { navigate: (r: Route) => void }) {
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto max-w-4xl"
           >
-            <span className="inline-block rounded-full border border-[#2AE6FB]/40 bg-[#2AE6FB]/10 px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-[#2AE6FB]">
+            <span className="inline-block rounded-full border border-[#2AE6FB]/50 bg-[#02183c]/70 px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-[#2AE6FB] backdrop-blur-md shadow-lg">
               {slide.badge} · Uganda &amp; Zambia
             </span>
 
-            <h1 className="mt-6 font-heading text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 font-heading text-3xl font-extrabold leading-[1.12] tracking-tight text-white drop-shadow-[0_3px_16px_rgba(2,24,60,0.9)] sm:text-5xl lg:text-6xl">
               {slide.heading}
             </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/90 drop-shadow-[0_2px_12px_rgba(2,24,60,0.85)] sm:text-lg">
               {slide.subheading}
             </p>
 
