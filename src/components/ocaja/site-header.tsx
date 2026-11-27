@@ -200,7 +200,7 @@ export function SiteHeader({
                     <DropdownMenuContent
                       align="center"
                       sideOffset={14}
-                      className="w-[580px] rounded-2xl border-white/10 bg-[#02183c] p-3 text-white shadow-2xl"
+                      className="w-[460px] rounded-2xl border-white/10 bg-[#02183c] p-3 text-white shadow-2xl"
                     >
                       <div className="mb-2 flex items-center justify-between border-b border-white/10 px-3 pt-1 pb-2">
                         <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#2AE6FB]">
@@ -222,18 +222,13 @@ export function SiteHeader({
                               onClick={() => go({ name: "pillar", pillarId: p.id })}
                               className="w-full text-left"
                             >
-                              <div className="flex items-start gap-2.5">
-                                <span className="mt-0.5 grid h-7 w-7 place-items-center rounded-lg bg-white/10 text-[#2AE6FB] shrink-0">
+                              <div className="flex items-center gap-2.5">
+                                <span className="grid h-7 w-7 place-items-center rounded-lg bg-white/10 text-[#2AE6FB] shrink-0">
                                   <Icon name={p.icon} className="h-3.5 w-3.5" />
                                 </span>
-                                <div className="min-w-0 flex-1">
-                                  <span className="block text-xs font-bold text-white">
-                                    {p.menuTitle}
-                                  </span>
-                                  <span className="mt-0.5 block truncate text-[0.7rem] text-white/60">
-                                    {p.tagline}
-                                  </span>
-                                </div>
+                                <span className="text-xs font-bold text-white transition-colors hover:text-[#2AE6FB]">
+                                  {p.menuTitle}
+                                </span>
                               </div>
                             </button>
                           </DropdownMenuItem>
