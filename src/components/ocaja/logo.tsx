@@ -36,51 +36,39 @@ export function PillarMark({
 }
 
 /**
- * OCAJA wordmark.
- * NOTE: the brand guide requires the official logo artwork — replace this
- * wordmark with the supplied SVG once design assets are provided.
+ * Official OCAJA Technologies Logo Artwork.
+ * Displays the official circular circuit-crest emblem with crisp rendering.
  */
 export function Logo({
   reversed = false,
   className,
+  size = "md",
 }: {
   reversed?: boolean;
   className?: string;
+  size?: "sm" | "md" | "lg";
 }) {
+  const sizeClasses = {
+    sm: "h-9",
+    md: "h-14",
+    lg: "h-16",
+  };
+
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2.5 select-none",
-        reversed ? "text-white" : "text-navy-deep",
+        "inline-flex items-center gap-3 select-none transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]",
         className
       )}
     >
-      <span
+      <img
+        src={reversed ? "/ocaja-logo-white.png" : "/ocaja-logo-dark.png"}
+        alt="OCAJA Technologies"
         className={cn(
-          "grid h-9 w-9 shrink-0 place-items-center rounded-xl",
-          reversed ? "bg-white/10 ring-1 ring-white/25" : "bg-navy"
+          "w-auto object-contain drop-shadow-[0_2px_10px_rgba(42,230,251,0.2)]",
+          sizeClasses[size]
         )}
-      >
-        <PillarMark className="h-4 w-[26px] text-white" barClass="fill-current" />
-      </span>
-      <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            "font-heading text-[1.15rem] font-bold tracking-[0.08em]",
-            reversed ? "text-white" : "text-navy-deep"
-          )}
-        >
-          OCAJA
-        </span>
-        <span
-          className={cn(
-            "mt-[3px] text-[0.5rem] font-medium tracking-[0.34em]",
-            reversed ? "text-white/70" : "text-ojagray"
-          )}
-        >
-          TECHNOLOGIES
-        </span>
-      </span>
+      />
     </span>
   );
 }
