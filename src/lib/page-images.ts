@@ -142,9 +142,8 @@ export const HERO_PEOPLE_IMAGES: Record<string, PageHeroImage> = {
 
   // 10. How We Work
   "how-we-work": {
-    imageUrl:
-      "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=1200&q=85",
-    imageAlt: "Black African agile development team conducting sprint review and architecture planning",
+    imageUrl: "/hero/how-we-work-agile-team.jpg",
+    imageAlt: "Black African agile development team conducting sprint planning and architecture review",
     tag: "4-Stage Agile Delivery Pods",
     specialistName: "Ronald Kato",
     specialistRole: "Agile Practice Director",
