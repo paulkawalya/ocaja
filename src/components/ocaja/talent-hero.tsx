@@ -99,15 +99,16 @@ export function TalentHero({ navigate }: { navigate: (r: Route) => void }) {
             <img
               src={slide.image}
               alt={slide.alt}
-              className="h-full w-full object-cover object-center filter brightness-[0.75] contrast-[1.05] saturate-[1.1]"
+              className="h-full w-full object-cover object-center filter brightness-[0.58] contrast-[1.1] saturate-[1.1]"
             />
           </motion.div>
         </AnimatePresence>
 
-        {/* Reduced Blue Opacity Overlays for High Background Image Clarity */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#02183c]/60 via-[#021a40]/35 to-[#021a40]/75" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#02183c]/50 via-transparent to-[#02183c]/50" />
-        <div className="talentelgia-dot-pattern absolute inset-0 opacity-15" />
+        {/* Central Content Area Darkening Scrims (Ensures crystal-clear content area readability while keeping background visible) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#02183c]/75 via-[#021a40]/60 to-[#021a40]/90" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(2,24,60,0.85)_0%,rgba(2,26,64,0.55)_55%,rgba(2,24,60,0.8)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#02183c]/80 via-transparent to-[#02183c]/80" />
+        <div className="talentelgia-dot-pattern absolute inset-0 opacity-20" />
 
         {/* Ambient Glow Orbs */}
         <div
@@ -120,12 +121,18 @@ export function TalentHero({ navigate }: { navigate: (r: Route) => void }) {
         />
 
         {/* Top and Bottom Fading Gradients for Smooth Boundary Blending */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#02183c]/85 to-transparent z-1" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#02183c] to-transparent z-1" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#021a40] to-transparent z-1" />
       </div>
 
       {/* Main Content Container (Full Cover Width & Length Alignment) */}
       <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+        {/* Dedicated Central Content Darkening Scrim */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[550px] w-full max-w-3xl rounded-[60px] bg-[#02183c]/75 blur-[70px] -z-1"
+        />
+
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id}
